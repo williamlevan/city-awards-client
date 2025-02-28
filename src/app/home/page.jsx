@@ -116,9 +116,97 @@ export default function Home() {
   if (!session) return null;
 
   return (
+    <main className="home2">
+      <div className="mobile-header">
+        <div className="header-body">
+          <div className="img-container">
+            <img src="/video-vintage.svg" alt="Film Camera" />
+          </div>
+          <h3>2025 CITY Oscars Competition</h3>
+        </div>
+        <div className="header-bottom">
+          <div className="header-button">
+            <button className={showMyBallotMobile ? 'selected' : ''} onClick={clickMyBallot}>MY BALLOT</button>
+          </div>
+          <div className="header-button">
+            <button className={!showMyBallotMobile ? 'selected' : ''} onClick={clickLeaderboard}>LEADERBOARD</button>
+          </div>
+        </div>
+        <div className="header-fade"></div>
+      </div>
+      <div className="scroll-container">
+        <div className="home-body">
+          {showMyBallotMobile ? (
+            <div className="ballot-container">
+              <div className="blurb">
+                <div>
+                  <div className="img-container">
+                    <img src="/information-outline.svg" alt="Info" />
+                  </div>
+                  <p>Ballots close at <span>5PM CST</span> on Sunday, March 2.</p>
+                </div>
+                <button>EDIT</button>
+              </div>
+              {hasBallot !== null ? (
+                hasBallot === true ? (
+                  <div className="user-ballot">
+                    {ballot.awards.map((award) => (
+                      <div key={award.awardId} className="ballot-award">
+                        <div className="ballot-award-left">
+                          {award.guessUrl !== "" ? (
+                            <img src={award.guessUrl} alt={award.guessName} />
+                          ) : (
+                            <img src={null} alt={award.guessName} />
+                          )}
+                        </div>
+                        <div className="ballot-award-right">
+                          <h4>{award.name.toUpperCase()}</h4>
+                          <div className="award-info-bottom">
+                            <div className="img-container">
+                              <img src="/star.svg" alt="Star" />
+                            </div>
+                            <p>{award.guessName}</p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="user-add-ballot">
+                    <h1>You haven't filled out your ballot yet!</h1>
+                    <p>Ballot submissions lock at <span>5PM CST</span> on March 2nd.</p>
+                    <button onClick={() => router.push('/my-ballot')}>START</button>
+                  </div>
+                )
+              ) : (
+                <div className="ballot-loading"><p>Loading...</p></div>
+              )}
+            </div>
+          ) : (
+            <div className="leaderboard-container">
+              <div className="leaderboard">
+                {allBallots.length === 0 ? (
+                  <h1>No Ballots Submitted</h1>
+                ) : (
+                  allBallots.map((ballot) => (
+                    <div key={ballot._id} className="leaderboard-ballot">
+                      <h4>{ballot.name}</h4>
+                      <p>{ballot.points} POINTS</p>
+                    </div>
+                  ))
+                )}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </main>
+  )
+
+  return (
     <main className='home'>
       <Header />
-      <Countdown />
+      {/* <Countdown /> */}
       <div className="mobile-home">
         <div className="home-content">
           <div className="mobile-header">

@@ -1,13 +1,13 @@
-'use client';
+// 'use client';
 
-import { signOut } from "next-auth/react";
+// import { signOut } from "next-auth/react";
 
 export default function Header() {
 
-    const clickLogout = () => {
-        console.log("Logging out...");
-        signOut({ callbackUrl: '/' });
-    }
+    // const clickLogout = () => {
+    //     console.log("Logging out...");
+    //     signOut({ callbackUrl: '/' });
+    // }
 
     return (
         <div className="header">
@@ -17,9 +17,9 @@ export default function Header() {
                 </div>
                 <h3>2025 CITY Oscars Competition</h3>
             </div>
-            <div className="header-right">
+            {/* <div className="header-right">
                 <button onClick={clickLogout}>LOGOUT</button>
-            </div>
+            </div> */}
         </div>
     )
 }

@@ -32,19 +32,23 @@ export default function Countdown() {
 
     return (
         <div className="countdown">
-            <div className="content">
-                <h2>OSCARS COUNTDOWN</h2>
-                <div className="content-right">
-                    <div className="timer">
-                        <h4>{timeLeft.days}</h4>
-                        <p>DAYS</p>
-                        <h4>{timeLeft.hours}</h4>
-                        <p>HRS</p>
-                        <h4>{timeLeft.minutes}</h4>
-                        <p>MINS</p>
-                        <h4>{timeLeft.seconds}</h4>
-                        <p>SECS</p>
-                    </div>
+            <h2>OSCARS COUNTDOWN</h2>
+            <div className="countdown-body">
+                <div className="timer-element">
+                    <h4>{timeLeft.days}</h4>
+                    <p>DAYS</p>
+                </div>
+                <div className="timer-element">
+                    <h4>{timeLeft.hours}</h4>
+                    <p>HRS</p>
+                </div>
+                <div className="timer-element">
+                    <h4>{timeLeft.minutes}</h4>
+                    <p>MINS</p>
+                </div>
+                <div className="timer-element">
+                    <h4>{timeLeft.seconds}</h4>
+                    <p>SECS</p>
                 </div>
             </div>
         </div>
